@@ -30,13 +30,22 @@ pipeline {
     //     sh 'docker push ahmedatya11/$customImage'
     //   }
     // }
-      stage('Push image'){
-        steps {
-        withDockerRegistry([ credentialsId: "docker-cred", url: "" ]) {
-        dockerImage.push()
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', "docker-cred" ) {
+            dockerImage.push()
+          }
         }
-    }                     
-    }             
+      }
+    }
+    //   stage('Push image'){
+    //     steps {
+    //     withDockerRegistry([ credentialsId: "docker-cred", url: "" ]) {
+    //     sh 'docker push <image>'
+    //     }
+    // }                     
+    // }             
 //      stage('Push Docker Image') {
 //       steps {  
             
