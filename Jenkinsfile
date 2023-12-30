@@ -3,6 +3,7 @@ pipeline {
     environment {
         DOCKER_IMAGE_NAME = "ahmedatya11/java-test-app"
     }
+    
     stages {
       stage('Clone repository') {  
         steps {
