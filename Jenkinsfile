@@ -30,7 +30,7 @@ pipeline {
         sh 'docker push ahmedatya11/$customImage'
       }
     }
-  }
+
 
 //       stage('Push image') {
 //         withDockerRegistry([ credentialsId: "dockerhubaccount", url: "" ]) {
@@ -92,4 +92,4 @@ pipeline {
         }      
   }
  
-
+}
