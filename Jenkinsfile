@@ -3,14 +3,12 @@ pipeline {
     environment {
         DOCKER_IMAGE_NAME = "ahmedatya11/java-test-app"
     }
-
     stages {
       stage('Clone repository') {  
         steps {
         checkout scm
     }
       }
-
       stage('Test and Build Docker Image') {
          steps {       
          script {
@@ -19,7 +17,6 @@ pipeline {
                     }
                     }                           
      }
-
     stage('Deploy Image') {
       steps{
         script {
@@ -29,7 +26,6 @@ pipeline {
         }
       }
     }
-
         stage('Trigger CD job ') {
                 steps {
                 echo "triggering CD"
