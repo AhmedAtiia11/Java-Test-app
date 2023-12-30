@@ -3,13 +3,15 @@ pipeline {
     environment {
         DOCKER_IMAGE_NAME = "ahmedatya11/java-test-app"
     }
-    
+
     stages {
+      //Cloning CI Repo to git the last version of the code
       stage('Clone repository') {  
         steps {
         checkout scm
     }
       }
+      // Build Dockerfile and Rename it with the Dockerhub-reg Account name and Add the commmit number as tag name 
       stage('Test and Build Docker Image') {
          steps {       
          script {
@@ -18,6 +20,7 @@ pipeline {
                     }
                     }                           
      }
+     // push Docker Image to the registry with the modified name 
     stage('Deploy Image') {
       steps{
         script {
@@ -27,6 +30,7 @@ pipeline {
         }
       }
     }
+    // Trigger  the CD job at Jenkins
         stage('Trigger CD job ') {
                 steps {
                 echo "triggering CD"
