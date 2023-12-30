@@ -20,21 +20,21 @@ pipeline {
                     }
                     }                           
      }
-     stage('Login') {
-      steps {
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-      }
-    }
-    stage('Push') {
-      steps {
-        sh 'docker push ahmedatya11/$customImage'
-      }
-    }
-//       stage('Push image') {
-//         withDockerRegistry([ credentialsId: "dockerhubaccount", url: "" ]) {
-//         dockerImage.push()
-//         }
-//     }                                  
+    //  stage('Login') {
+    //   steps {
+    //     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+    //   }
+    // }
+    // stage('Push') {
+    //   steps {
+    //     sh 'docker push ahmedatya11/$customImage'
+    //   }
+    // }
+      stage('Push image') {
+        withDockerRegistry([ credentialsId: "docker-cred", url: "" ]) {
+        dockerImage.push()
+        }
+    }                                  
 //      stage('Push Docker Image') {
 //       steps {  
             
