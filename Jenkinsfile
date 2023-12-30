@@ -12,7 +12,7 @@ pipeline {
       }
 
 
-     stage('Test and Build Docker Image') {
+      stage('Test and Build Docker Image') {
          steps {       
          script {
                     env.GIT_COMMIT_REV = sh (script: 'git log -n 1 --pretty=format:"%h"', returnStdout: true)
@@ -30,11 +30,13 @@ pipeline {
     //     sh 'docker push ahmedatya11/$customImage'
     //   }
     // }
-      stage('Push image') {
+      stage('Push image'){
+        steps {
         withDockerRegistry([ credentialsId: "docker-cred", url: "" ]) {
         dockerImage.push()
         }
-    }                                  
+    }                     
+    }             
 //      stage('Push Docker Image') {
 //       steps {  
             
