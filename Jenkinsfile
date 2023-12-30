@@ -34,7 +34,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( '', "docker-cred" ) {
-            dockerImage.push()
+            sh 'docker push ${DOCKER_IMAGE_NAME}:${GIT_COMMIT_REV}'
           }
         }
       }
