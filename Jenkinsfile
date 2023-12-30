@@ -19,20 +19,41 @@ pipeline {
                     customImage = docker.build("${DOCKER_IMAGE_NAME}:${GIT_COMMIT_REV}")
                     }
                     }                           
-     }                               
-     stage('Push Docker Image') {
-      steps {  
+     }
+     stage('Login') {
+      steps {
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+      }
+    }
+    stage('Push') {
+      steps {
+        sh 'docker push ahmedatya11/$customImage'
+      }
+    }
+  }
+//       stage('Push image') {
+//         withDockerRegistry([ credentialsId: "dockerhubaccount", url: "" ]) {
+//         dockerImage.push()
+//         }
+//     }                                  
+//      stage('Push Docker Image') {
+//       steps {  
             
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker') {
-                        customImage.push("${GIT_COMMIT_REV}")
-                    //    customImage.push("latest")
+//                 script {
+//                     docker.withRegistry('https://registry.hub.docker.com', 'docker') {
+//                         customImage.push("${GIT_COMMIT_REV}")
+//                     //    customImage.push("latest")
                     
-                    }
-                }
-            }
-   }
+//                     }
+//                 }
+//             }
+//    }
    
+
+
+
+
+
   //    stage('Update GIT') {
    //    steps {     
     //   script {
@@ -57,6 +78,10 @@ pipeline {
       //}
       //}
     //}
+
+
+
+
 
         stage('Trigger CD job ') {
                 steps {
