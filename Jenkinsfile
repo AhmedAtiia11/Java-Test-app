@@ -58,7 +58,6 @@ pipeline {
 //                 }
 //             }
 //    }
-   
 
 
         stage('Trigger CD job ') {
