@@ -31,7 +31,7 @@ pipeline {
       }
     }
   }
-  
+
 //       stage('Push image') {
 //         withDockerRegistry([ credentialsId: "dockerhubaccount", url: "" ]) {
 //         dockerImage.push()
@@ -92,5 +92,5 @@ pipeline {
         }
         
   }
- }
+ 
 
