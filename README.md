@@ -34,7 +34,8 @@ This repository is dedicated to building a simple Java application using Docker,
    - Create a container named `devopsarea-sample-java-app` and forward the container internal port 8080 to localhost:8080 on the host machine.
 
 - Open in your browser to view the result.
-     ```http://localhost:8080/
+     ```
+     http://localhost:8080/
      ```
       in your browser to view the result.
 
