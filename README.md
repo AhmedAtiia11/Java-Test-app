@@ -37,8 +37,6 @@ This repository is dedicated to building a simple Java application using Docker,
      ```
      http://localhost:8080/
      ```
-      in your browser to view the result.
-
 ## Building Project with Jenkinsfile
 
 ### Preparation:
