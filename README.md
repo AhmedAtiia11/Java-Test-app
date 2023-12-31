@@ -88,12 +88,27 @@ This repository is dedicated to building a simple Java application using Docker,
 
 5. ArgoCD is triggered, deploying the application to the 'prod' namespace.
 
-6. To obtain the EXTERNAL-IP, run the command:
+6. To obtain ArgoCD IP
+```
+ kubectl get pods -n argocd -o wide |grep argocd-server
+```
+   - Then Open in your browser Pod-IP:8080 <port specified in the pod definition file>
+   - username : admin
+   - Password : 
+      - Run command 
+         ```
+         kubectl get secrets -n argocd argocd-initial-admin-secret -o yaml
+         ```
+      - Take password and decode it using  base64 --decode 
+      - And that's the password 
+7. create an Application and provide the (`Application.yaml`) file and it will runs automatically when it gets triggered .
+
+8. To obtain the EXTERNAL-IP, run the command:
    ```
    kubectl get svc -n prod.
    ```
 
-7. Open in your browser and view the result.
+9. Open in your browser and view the result.
      ```
      http://EXTERNAL-IP:8080/
      ``` 
