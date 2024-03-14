@@ -1,5 +1,6 @@
 # Java Test App CI/CD
 
+
 ## Overview
 This repository is dedicated to building a simple Java application using Docker, Jenkins, Kubernetes (K8s), and ArgoCD. The CI pipeline, orchestrated by Jenkins, utilizes a Jenkinsfile to build the Docker image and push it to the Docker registry, tagged with the commit number. The CD pipeline, also orchestrated by Jenkins, involves a Jenkinsfile responsible for updating the image name in the Kubernetes (K8s) deployment. Subsequently, ArgoCD is triggered to manually build the application with the latest image version. This streamlined CI/CD process ensures efficient development, deployment, and orchestration of the Java application.
 
